@@ -1,0 +1,16 @@
+version: "2"
+services:
+  app:
+    build:
+      context: .
+    image: testservice
+    depends_on:
+      - db
+    ports:
+      - "2333:2333"
+    environment:
+      - MONGOURI=mongodb://db:27017
+  db:
+    image: mongo
+    volumes:
+      - /data/db
